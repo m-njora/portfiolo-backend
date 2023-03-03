@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+  has_many :skills
+
+  has_many :projects
+
     # table consists of password_hash as a column to store password hashes in DB
     include BCrypt
     # retrieve password from hash
