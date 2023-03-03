@@ -1,95 +1,96 @@
-class SkillController < AppController 
+class SkillController < AppController
 
     set :views, './app/views'
-
-    # @method: Display a small welcome message
+  
+    # @method which will display a small welcome message
     get '/hello' do
-        "Our very first controller"
+      "You are in the Skill Controller go a head and add your skills"
     end
-
-    # @method: Add a new TO-DO to the DB
+  
+    # @method: Adds a new created skill to the DB
     post '/skills/create' do
-        begin
-            skill = Skill.create( self.data(create: true) )
-            json_response(code: 201, data: skill)
-        rescue => e
-            json_response(code: 422, data: { error: e.message })
-        end
+      begin
+        skill = Skill.create( self.data(create: true) )
+        json_response(code: 201, data: skill)
+      rescue => e
+        json_response(code: 422, data: { error: e.message })
+      end
     end
-
-    # @method: Display all skills
+  
+  
+    # @method which displays all skills in our DB
     get '/skills' do
-        skills = Skill.all
-        json_response(data: skills)
+      skills = Skill.all
+      json_response(data: skills)
     end
-
-    # @view: Renders an erb file which shows all TODOs
-    # erb has content_type because we want to override the default set above
+  
+    # @view that renders an erb file o/p if any and shows a list of all projects
+    # erb has content_type because we want to override the deafult set above
     get '/' do
-        @skills = Skill.all.map { |skill|
-          {
-            skill: skill,
-            badge: skill_status_badge(Skill.status)
-          }
-        }
-        @i = 1
-        erb_response :skills
+      @skills = Skill.all.map { |skill|
+      {
+        skill: skill,
+        badge: skill_status_badge(Skill.status)
+      }
+      }
+      @i = 1
+      erb_response :skills
     end
-
-    # @method: Update existing TO-DO according to :id
+  
+    # @method which updates a specific skill using its :id as reference
     put '/skills/update/:id' do
-        begin
-            skill = Skill.find(self.skill_id)
-            Skill.update(self.data)
-            json_response(data: { message: "skill updated successfully" })
-        rescue => e
-            json_response(code: 422 ,data: { error: e.message })
-        end
-    end
-
-    # @method: Delete TO-DO based on :id
-    delete '/skills/destroy/:id' do
-        begin
-            skill = Skill.find(self.skill_id)
-            Skill.destroy
-            json_response(data: { message: "skill deleted successfully" })
-        rescue => e
+      begin
+        skill = Skill.find(self.skill_id)
+        Skill.update(self.data)
+        json_response(data: { message: 'Skill updated successfully' })
+      rescue => e
           json_response(code: 422, data: { error: e.message })
-        end
+      end
     end
-
-
+  
+    # @method that deletes a skill from the DB using its :id
+    delete '/skills/destroy/:id' do
+      begin
+        skill = Skill.find(self.skill_id)
+        Skill.destroy
+        json_response(data: { message: 'Skill deleted successfully' })
+      rescue => e
+        json_response(code: 422, data: { error: e.message })
+      end
+    end
+  
+  
     private
-
-    # @helper: format body data
+  
+    # @helper: format body data to JSON format
     def data(create: false)
-        payload = JSON.parse(request.body.read)
-        if create
-            payload["createdAt"] = Time.now
-        end
-        payload
+      payload = JSON.parse(request.body.read)
+      if create
+        payload['createdAt'] = Time.now
+      end
+      payload
     end
-
-    # @helper: retrieve to-do :id
+  
+    # @helper which assists in retreiving skill :id
     def skill_id
-        params['id'].to_i
+      params['id'].to_i
     end
-
-    # @helper: format status style
+  
+    # @helper that formats status style
     def skill_status_badge(status)
-        case status
-            when 'CREATED'
-                'bg-info'
-            when 'ONGOING'
-                'bg-success'
-            when 'CANCELLED'
-                'bg-primary'
-            when 'COMPLETED'
-                'bg-warning'
-            else
-                'bg-dark'
-        end
+      case status
+      when 'CREATED'
+        'bg-success'
+      when 'ONGOING'
+        'bg-suu-success'
+      when 'CANCELLED'
+        'bg-primary'
+      when 'COMPLETED'
+        'bg-warning'
+      else
+        'bg-dark'
+      end
     end
-
-
-end
+  
+  end
+  
