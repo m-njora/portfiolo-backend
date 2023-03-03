@@ -1,5 +1,5 @@
-# My-Portfolio-Application
-My-Portfolio-Application is a basic API built with ruby's Sinatra DSL.
+# Portfolio-Backend
+Portfolio-Backend is a basic API built with ruby's Sinatra DSL.
 This project is a demo that shows the power of the DSL in building server-side applications quickly.
 The application has been built with the MVC design pattern.
 ## Pre-Requisites
@@ -19,3 +19,26 @@ This application has been built with the following tools:
 - **rerun `v0.14`**
 - **Sinatra `v3.0.5`**
 - **ERB `v4.0`**
+
+## Setup
+You can setup this repository by following this manual
+1. Clone the repository
+    ```{shell}
+   git clone https://github.com/m-njora/portfiolo-backend
+   ```
+2. Ensure the ruby gems are setup in your machine
+    ```{shell}
+   bundle install
+   ```
+3. Perform any pending database migrations
+   ```{shell}
+   rake db:migrate
+   ```
+4. Run the application
+    ```{shell}
+    rake start
+    ```
+5. Open the application from your browser
+    ```
+   http://localhost:9292
+   ```
