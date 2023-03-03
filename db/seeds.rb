@@ -1,4 +1,6 @@
 require 'faker'
+puts "Seeding data..."
+
 
 17.times do
 
