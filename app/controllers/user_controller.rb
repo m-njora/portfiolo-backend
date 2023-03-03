@@ -38,6 +38,15 @@ class UserController < AppController
       end
     end
   
+    get '/user' do
+      user = User.all
+      json_response(data: user)
+    end
+    get '/user/last' do
+      user = User.all.last
+      json_response(data: user)
+    end
+  
     private
   
     # @helper: parse user JSON data
