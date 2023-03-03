@@ -7,7 +7,7 @@ class ProjectController < AppController
         "Our very first controller"
     end
 
-    # @method: Add a new TO-DO to the DB
+    # @method: Add a new projects to the DB
     post '/projects/create' do
         begin
             project = Project.create( self.data(create: true) )
@@ -23,7 +23,7 @@ class ProjectController < AppController
         json_response(data: projects)
     end
 
-    # @view: Renders an erb file which shows all TODOs
+    # @view: Renders an erb file which shows all projects
     # erb has content_type because we want to override the default set above
     get '/' do
         @projects = Project.all.map { |project|
@@ -36,7 +36,7 @@ class ProjectController < AppController
         erb_response :projects
     end
 
-    # @method: Update existing TO-DO according to :id
+    # @method: Update existing projects according to :id
     put '/projects/update/:id' do
         begin
             project = Project.find(self.project_id)
@@ -47,7 +47,7 @@ class ProjectController < AppController
         end
     end
 
-    # @method: Delete TO-DO based on :id
+    # @method: Delete projects based on :id
     delete '/projects/destroy/:id' do
         begin
             project = Project.find(self.project_id)
@@ -70,7 +70,7 @@ class ProjectController < AppController
         payload
     end
 
-    # @helper: retrieve to-do :id
+    # @helper: retrieve projects :id
     def project_id
         params['id'].to_i
     end
