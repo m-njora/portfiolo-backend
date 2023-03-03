@@ -42,3 +42,29 @@ You can setup this repository by following this manual
     ```
    http://localhost:9292
    ```
+## Application
+This application is a simple web API that allows users to:
+
+### users
+
+- Register a new if account does not exist.
+- Log in to existing account.
+
+### project
+
+- Create a project items.
+- Update individual project items.
+- View all project items.
+- Filter through project items by date.
+- Delete a project item.
+
+### Skills
+
+- Create a skill item.
+- View all skill items.
+- Update skill items.
+- Filter through skill items.
+- Delete a skill item.
+
+### MODELS
+Database schema definitions.
