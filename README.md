@@ -85,3 +85,19 @@ Database schema definitions.
 | full_name     | String    | User's full name.                     |
 | password_hash | String    | User's password hashed with `BCrypt`. |
 | updated_at    | Date      | The date the user was updated.        |
+
+
+### ROUTES
+1. `/hello` - Presents a simple welcome message.
+2. `/auth/register` - Create a new user account.
+   ```{json}
+   ## REQUEST BODY
+   {
+    "full_name": "John Doe",
+    "email": "mail@mail.com",
+    "password": "12345678"
+   }
+   ```
+3. `/auth/login` - Log in a user using email and password.
+   ```{json}
+   ## REQUEST BODY
