@@ -68,3 +68,20 @@ This application is a simple web API that allows users to:
 
 ### MODELS
 Database schema definitions.
+
+#### PROJECT
+| COLUMN      | DATA TYPE                                       | DESCRIPTION                            |
+|-------------|-------------------------------------------------|----------------------------------------|
+| id          | Integer                                         | Unique identifier.                     |
+| title       | String                                          | The name of the project.               |
+| description | String                                          | A short description about the project. |
+| due         | Date                                            | The set due date for the project.      |
+| createdAt   | Date                                            | The date the project was created.      |
+| status      | ENUM `[CREATED, ONGOING, COMPLETED, CANCELLED]` | The status of the project.             |
+#### USER
+| COLUMN        | DATA TYPE | DESCRIPTION                           |
+|---------------|-----------|---------------------------------------|
+| id            | Integer   | Unique identifier.                    |
+| full_name     | String    | User's full name.                     |
+| password_hash | String    | User's password hashed with `BCrypt`. |
+| updated_at    | Date      | The date the user was updated.        |
