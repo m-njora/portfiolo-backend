@@ -14,7 +14,9 @@ puts "Seeding data..."
         "country": Faker::Address.country,
         "profession": Faker::Job.title,
         "education": Faker::Job.education_level,
-        "experience": rand(2..4)
+        "experience": rand(2..4),
+        "createdAt": rand(3..4)
+        
     )
     rand(1..6).times do
         Project.create(
