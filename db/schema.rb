@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_150303) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_121948) do
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -36,6 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_150303) do
     t.datetime "createdAt", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prof_pic_url"
+    t.integer "phone_number"
+    t.string "zip_address"
+    t.string "country"
+    t.string "profession"
+    t.string "education"
+    t.integer "experience"
+    t.string "skills"
     t.index ["email"], name: "uk_email", unique: true
   end
 
