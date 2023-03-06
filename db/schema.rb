@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_121948) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_hash", null: false
-    t.datetime "createdAt", null: false
+    t.datetime "createdAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "prof_pic_url"
